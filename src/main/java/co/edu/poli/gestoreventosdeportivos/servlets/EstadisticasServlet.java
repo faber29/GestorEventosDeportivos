@@ -28,17 +28,17 @@ public class EstadisticasServlet extends HttpServlet {
         List<Evento> eventos = eventoDAO.obtenerEventos();
         List<Equipo> equipos = equipoDAO.obtenerEquipos();
 
-        // 1️⃣ Cantidad de eventos por deporte
+        // Cantidad de eventos por deporte
         Map<String, Long> eventosPorDeporte = eventos.stream()
                 .collect(Collectors.groupingBy(Evento::getDeporte, Collectors.counting()));
 
-        // 2️⃣ Promedio de jugadores por equipo
+        // Promedio de jugadores por equipo
         double promedioJugadores = equipos.isEmpty() ? 0 : equipos.stream()
                 .mapToInt(e -> e.getJugadores().size())
                 .average()
                 .orElse(0);
 
-        // 3️⃣ Equipos con más eventos programados
+        // Equipos con más eventos programados
         Map<Integer, Long> eventosPorEquipo = eventos.stream()
                 .flatMap(e -> e.getEquiposParticipantes().stream())
                 .collect(Collectors.groupingBy(id -> id, Collectors.counting()));
@@ -49,7 +49,7 @@ public class EstadisticasServlet extends HttpServlet {
                 .limit(3) // Top 3 equipos con más eventos
                 .collect(Collectors.toList());
 
-        // 4️⃣ Porcentaje de ocupación de cada evento
+        // Porcentaje de ocupación de cada evento
         Map<String, Double> ocupacionEventos = eventos.stream()
                 .collect(Collectors.toMap(
                         Evento::getNombre,

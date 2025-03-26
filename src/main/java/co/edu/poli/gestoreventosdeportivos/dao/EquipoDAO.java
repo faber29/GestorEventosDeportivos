@@ -10,7 +10,7 @@ public class EquipoDAO {
 
     public EquipoDAO() {}
 
-    // Método para agregar un equipo
+    // Metodo para agregar un equipo
     public boolean agregarEquipo(Equipo equipo) {
         // Validar que no exista otro equipo con el mismo nombre y deporte
         for (Equipo e : equipos) {
@@ -24,7 +24,7 @@ public class EquipoDAO {
         return true;
     }
 
-    // Método para obtener todos los equipos
+    // Metodo para obtener todos los equipos
     public List<Equipo> obtenerEquipos() {
         return new ArrayList<>(equipos); // Devolver una copia para evitar modificaciones externas
     }

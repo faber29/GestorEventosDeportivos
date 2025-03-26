@@ -12,7 +12,6 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.util.List;
-import java.util.stream.Collectors;
 
 @WebServlet("/equipos")
 public class EquipoServlet extends HttpServlet {
@@ -24,7 +23,7 @@ public class EquipoServlet extends HttpServlet {
         BufferedReader reader = request.getReader();
         Equipo nuevoEquipo = gson.fromJson(reader, Equipo.class);
 
-        // 🚨 Validar si ya existe un equipo con el mismo nombre y deporte
+        // Validar si ya existe un equipo con el mismo nombre y deporte
         boolean existeEquipo = equipoDAO.obtenerEquipos().stream()
                 .anyMatch(equipo -> equipo.getNombre().equalsIgnoreCase(nuevoEquipo.getNombre()) &&
                         equipo.getDeporte().equalsIgnoreCase(nuevoEquipo.getDeporte()));

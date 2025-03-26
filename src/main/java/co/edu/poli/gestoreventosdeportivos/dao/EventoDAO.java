@@ -10,7 +10,7 @@ public class EventoDAO {
 
     public EventoDAO() {}
 
-    // ✅ Método para agregar un evento en memoria
+    // Metodo para agregar un evento en memoria
     public boolean agregarEvento(Evento evento) {
         if (evento == null || evento.getEquiposParticipantes() == null || evento.getEquiposParticipantes().size() < 2) {
             return false;
@@ -20,26 +20,26 @@ public class EventoDAO {
         return true;
     }
 
-    // ✅ Obtener todos los eventos almacenados en memoria
+    // Obtener todos los eventos almacenados en memoria
     public List<Evento> obtenerEventos() {
         return new ArrayList<>(eventos);
     }
 
-    // ✅ Método para vender entradas en un evento
+    // Metodo para vender entradas en un evento
     public boolean venderEntradas(int eventoId, int cantidad) {
         for (Evento evento : eventos) {
             if (evento.getId() == eventoId) {
                 if (evento.getEntradasVendidas() + cantidad <= evento.getCapacidad()) {
                     evento.setEntradasVendidas(evento.getEntradasVendidas() + cantidad);
-                    return true; // ✅ Venta realizada
+                    return true; // Venta realizada
                 }
-                return false; // ❌ No hay suficientes entradas disponibles
+                return false; // No hay suficientes entradas disponibles
             }
         }
-        return false; // ❌ Evento no encontrado
+        return false; // Evento no encontrado
     }
 
-    // ✅ Método para actualizar el estado de un evento
+    // Metodo para actualizar el estado de un evento
     public boolean actualizarEstado(int eventoId, String nuevoEstado) {
         for (Evento evento : eventos) {
             if (evento.getId() == eventoId) {

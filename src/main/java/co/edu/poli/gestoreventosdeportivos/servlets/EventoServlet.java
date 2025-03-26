@@ -80,21 +80,21 @@ public class EventoServlet extends HttpServlet {
         response.getWriter().write(gson.toJson(eventosFiltrados));
     }
 
-    // ✅ Método para calcular las estadísticas
+    // Metodo para calcular las estadísticas
     private void obtenerEstadisticas(HttpServletResponse response) throws IOException {
         List<Evento> eventos = eventoDAO.obtenerEventos();
         List<Equipo> equipos = equipoDAO.obtenerEquipos();
         List<Jugador> jugadores = jugadorDAO.obtenerJugadores();
 
-        // 1️⃣ Cantidad de eventos por deporte
+        // Cantidad de eventos por deporte
         Map<String, Long> eventosPorDeporte = eventos.stream()
                 .collect(Collectors.groupingBy(Evento::getDeporte, Collectors.counting()));
 
-        // 2️⃣ Promedio de jugadores por equipo
+        // Promedio de jugadores por equipo
         double promedioJugadores = equipos.isEmpty() ? 0 :
                 jugadores.size() / (double) equipos.size();
 
-        // 3️⃣ Equipos con más eventos programados
+        // Equipos con más eventos programados
         Map<Integer, Long> eventosPorEquipo = eventos.stream()
                 .flatMap(evento -> evento.getEquiposParticipantes().stream())
                 .collect(Collectors.groupingBy(equipoId -> equipoId, Collectors.counting()));
@@ -105,13 +105,13 @@ public class EventoServlet extends HttpServlet {
                 .limit(3) // Obtener los 3 equipos con más eventos
                 .collect(Collectors.toList());
 
-        // 4️⃣ Porcentaje de ocupación de cada evento
+        // Porcentaje de ocupación de cada evento
         Map<Integer, Double> ocupacionEventos = eventos.stream()
                 .collect(Collectors.toMap(Evento::getId,
                         evento -> (evento.getCapacidad() > 0) ?
                                 (evento.getEntradasVendidas() / (double) evento.getCapacidad()) * 100 : 0));
 
-        // ✅ Construir JSON de respuesta
+        // Construir JSON de respuesta
         Map<String, Object> estadisticas = new HashMap<>();
         estadisticas.put("eventosPorDeporte", eventosPorDeporte);
         estadisticas.put("promedioJugadoresPorEquipo", promedioJugadores);

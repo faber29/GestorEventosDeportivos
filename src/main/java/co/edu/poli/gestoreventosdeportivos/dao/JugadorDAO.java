@@ -10,7 +10,7 @@ public class JugadorDAO {
 
     public JugadorDAO() {}
 
-    // Método para agregar un jugador
+    // Metodo para agregar un jugador
     public boolean agregarJugador(Jugador jugador) {
         // Verificar que no haya otro jugador con el mismo número en el mismo equipo
         for (Jugador j : jugadores) {
@@ -23,7 +23,7 @@ public class JugadorDAO {
         return true;
     }
 
-    // Método para obtener todos los jugadores
+    // Metodo para obtener todos los jugadores
     public List<Jugador> obtenerJugadores() {
         return new ArrayList<>(jugadores);
     }

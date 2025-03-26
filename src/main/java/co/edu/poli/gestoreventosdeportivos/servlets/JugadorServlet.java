@@ -25,7 +25,7 @@ public class JugadorServlet extends HttpServlet {
         BufferedReader reader = request.getReader();
         Jugador nuevoJugador = gson.fromJson(reader, Jugador.class);
 
-        // 🚨 Validar si ya existe un jugador con el mismo número en el equipo
+        // Validar si ya existe un jugador con el mismo número en el equipo
         boolean existeNumero = jugadorDAO.obtenerJugadores().stream()
                 .anyMatch(jugador -> jugador.getEquipoId() == nuevoJugador.getEquipoId() &&
                         jugador.getNumero() == nuevoJugador.getNumero());
