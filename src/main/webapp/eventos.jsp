@@ -86,6 +86,7 @@
         <td><%= evento.getFecha() %></td>
         <td><%= evento.getLugar() %></td>
         <td><%= evento.getDeporte() %></td>
+
         <td><%= evento.getCapacidad() %></td>
         <td><%= evento.getEntradasVendidas() %></td>
         <td><%= evento.getEstado() %></td>

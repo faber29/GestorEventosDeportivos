@@ -26,7 +26,7 @@ public class EquipoDAO {
 
     // Metodo para obtener todos los equipos
     public List<Equipo> obtenerEquipos() {
-        return new ArrayList<>(equipos); // Devolver una copia para evitar modificaciones externas
+        return new ArrayList<>(equipos);
     }
 
     // Buscar un equipo por ID
