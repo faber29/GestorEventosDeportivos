@@ -55,7 +55,7 @@ public class JugadorServlet extends HttpServlet {
         response.getWriter().write(gson.toJson(jugadores));
     }
 
-    // ✅ Endpoint para transferir jugadores entre equipos
+    // Endpoint para transferir jugadores entre equipos
     private void transferirJugador(HttpServletRequest request, HttpServletResponse response) throws IOException {
         int jugadorId = Integer.parseInt(request.getParameter("jugadorId"));
         int equipoDestino = Integer.parseInt(request.getParameter("equipoDestino"));
