@@ -29,15 +29,17 @@ public class EventoDAO {
     public boolean venderEntradas(int eventoId, int cantidad) {
         for (Evento evento : eventos) {
             if (evento.getId() == eventoId) {
-                if (evento.getEntradasVendidas() + cantidad <= evento.getCapacidad()) {
-                    evento.setEntradasVendidas(evento.getEntradasVendidas() + cantidad);
-                    return true; // Venta realizada
+                int disponibles = evento.getCapacidad() - evento.getEntradasVendidas();
+                if (cantidad > disponibles) {
+                    return false; // No hay suficientes entradas disponibles
                 }
-                return false; // No hay suficientes entradas disponibles
+                evento.setEntradasVendidas(evento.getEntradasVendidas() + cantidad);
+                return true;
             }
         }
         return false; // Evento no encontrado
     }
+
 
     // Metodo para actualizar el estado de un evento
     public boolean actualizarEstado(int eventoId, String nuevoEstado) {
