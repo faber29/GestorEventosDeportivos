@@ -51,3 +51,42 @@ Transferencia de jugadores: GET /jugadores/transferir?jugadorId=X&equipoDestino=
 
 - GET /estadisticas: Retorna información estadística sobre los eventos, como cantidad de eventos por deporte, promedio de jugadores por equipo, 
 equipos con más eventos y porcentaje de ocupación de cada evento.
+
+## Requisitos
+
+- Java JDK 8 o superior
+
+- Apache Tomcat instalado y configurado
+
+- Maven (para la gestión de dependencias)
+
+- Gson como dependencia para trabajar con JSON
+
+## Ejemplos de puntos
+
+### Equipos
+
+- GET http://localhost:8085/GestorEventosDeportivos/equipos
+
+- POST http://localhost:8085/GestorEventosDeportivos/equipos
+  
+### Jugadores
+
+- GET http://localhost:8085/GestorEventosDeportivos/jugadores
+
+- POST http://localhost:8085/GestorEventosDeportivos/jugadores
+
+### Eventos
+
+- GET http://localhost:8085/GestorEventosDeportivos/eventos
+
+- POST http://localhost:8085/GestorEventosDeportivos/eventos
+
+- PUT http://localhost:8085/GestorEventosDeportivos/eventos?action=vender-entradas&eventoId=1&cantidad=1000
+
+- PUT http://localhost:8085/GestorEventosDeportivos/eventos?action=actualizar-estado&eventoId=1&estado=Finalizado
+
+### Estadísticas
+
+- GET http://localhost:8085/GestorEventosDeportivos/eventos?action=estadisticas
+- 
