@@ -3,7 +3,8 @@
 Este proyecto es una aplicación web desarrollada en Java utilizando Servlets y JSP. Simula un sistema de gestión de eventos deportivos que permite
 registrar equipos, jugadores y eventos, además de realizar consultas y modificar el estado de los eventos en tiempo real.
 Toda la información se almacena en memoria utilizando colecciones (ArrayList), y se inyecta dinámicamente a través de Postman sin necesidad de
-conexión a una base de datos.
+conexión a una base de datos de forma temporal.
+- Desarrollado por John Faber Estrada Rave
 
 ## Estructura del Proyecto
 
@@ -89,4 +90,16 @@ equipos con más eventos y porcentaje de ocupación de cada evento.
 ### Estadísticas
 
 - GET http://localhost:8085/GestorEventosDeportivos/eventos?action=estadisticas
-- 
+
+## Uso de Git
+
+Algunos comandos clave utilizados para la gestión del proyecto:
+
+```bash
+git init  # Inicializa un repositorio Git local
+git remote add origin <URL>  # Enlaza el repositorio local con uno remoto
+git add .  # Agrega todos los archivos al área de preparación
+git commit -m "Mensaje descriptivo"  # Registra los cambios
+git push  # Envía los cambios al repositorio remoto
+git pull  # Obtiene los cambios del repositorio remoto
+git status  # Muestra el estado actual del repositorio
